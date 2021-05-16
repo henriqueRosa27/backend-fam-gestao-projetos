@@ -18,4 +18,8 @@
     <ProjectReference Include="..\FAM.GestaoProjetos.Services\FAM.GestaoProjetos.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

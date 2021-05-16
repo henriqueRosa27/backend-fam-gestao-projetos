@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace FAM.GestaoProjetos.Application.Validations
 {
-    public class CidadeValidation : AbstractValidator<CidadeViewModel>
+    public class CidadeValidation : AbstractValidator<CriarCidadeViewModel>
     {
         public CidadeValidation()
         {

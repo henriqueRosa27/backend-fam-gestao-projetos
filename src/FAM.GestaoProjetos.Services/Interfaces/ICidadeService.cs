@@ -8,6 +8,10 @@ namespace FAM.GestaoProjetos.Services.Interfaces
     public interface ICidadeService : IDisposable
     {
         Task<List<CidadeViewModel>> BuscarTodos();
-        Task<CidadeViewModel> Criar(CidadeViewModel viewModel);
+        Task<CidadeViewModel> BurcarPorId(Guid id);
+        Task<CidadeViewModel> Criar(CriarCidadeViewModel viewModel);
+        Task<CidadeViewModel> Alterar(CriarCidadeViewModel viewModel, Guid id);
+        Task Inativar(Guid id);
+        Task<CidadeViewModel> Ativar(Guid id);
     }
 }

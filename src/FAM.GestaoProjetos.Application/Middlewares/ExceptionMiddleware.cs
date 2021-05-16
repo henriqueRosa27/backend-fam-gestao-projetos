@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FAM.GestaoProjetos.Application.Middlewares
@@ -28,7 +29,7 @@ namespace FAM.GestaoProjetos.Application.Middlewares
             }
             catch (Exception ex)
             {
-                await TratarDefautlErro(500, "Erro inesperado", httpContext);
+                await TratarDefautlErro(500, JsonSerializer.Serialize(new { erro = "Erro inesperado" }), httpContext);
             }
         }
 
@@ -36,7 +37,7 @@ namespace FAM.GestaoProjetos.Application.Middlewares
         {
             var bytes = Encoding.UTF8.GetBytes(mensagem);
 
-            context.Response.ContentType = "application/text";
+            context.Response.ContentType = "application/json";
             context.Response.StatusCode = statusCode;
             await context.Response.Body.WriteAsync(bytes, 0, bytes.Length);
         }

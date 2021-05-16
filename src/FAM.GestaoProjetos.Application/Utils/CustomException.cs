@@ -15,7 +15,11 @@ namespace FAM.GestaoProjetos.Application.Utils
 
         public static CustomException BadRequest(string message) =>
             new CustomException(HttpStatusCode.BadRequest, message);
+
         public static CustomException ValidationError(string message) =>
             new CustomException(HttpStatusCode.UnprocessableEntity, message);
+
+        public static CustomException EntityNotFound(string message) =>
+            new CustomException(HttpStatusCode.NotFound, message);
     }
 }

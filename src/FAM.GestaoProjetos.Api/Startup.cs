@@ -36,7 +36,7 @@ namespace FAM.GestaoProjetos.Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.SwaggerApplicationConfig(env);
-            app.ApiApplicationConfig();
+            app.ApiApplicationConfig(env);
         }
     }
 }

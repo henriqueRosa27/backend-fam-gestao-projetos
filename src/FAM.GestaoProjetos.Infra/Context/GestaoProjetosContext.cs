@@ -10,7 +10,10 @@ namespace FAM.GestaoProjetos.Infra.Context
     public class GestaoProjetosContext : DbContext
     {
         public GestaoProjetosContext(DbContextOptions options) : base(options)
-        { }
+        {
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            ChangeTracker.AutoDetectChangesEnabled = false;
+        }
 
         public DbSet<Cidade> Cidades { get; set; }
 
@@ -40,7 +43,7 @@ namespace FAM.GestaoProjetos.Infra.Context
         {
             var entries = ChangeTracker
          .Entries()
-         .Where(e => e.Entity is BaseModel && ( e.State == EntityState.Added || e.State == EntityState.Modified));
+         .Where(e => e.Entity is BaseModel && (e.State == EntityState.Added || e.State == EntityState.Modified));
 
             foreach (var entityEntry in entries)
             {

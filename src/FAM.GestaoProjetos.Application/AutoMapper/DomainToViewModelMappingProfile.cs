@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FAM.GestaoProjetos.Application.ViewModels;
+using FAM.GestaoProjetos.Application.ViewModels.Cidade;
 using FAM.GestaoProjetos.Domain.Models;
 
 namespace FAM.GestaoProjetos.Application.AutoMapper
