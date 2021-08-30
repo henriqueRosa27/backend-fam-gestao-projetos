@@ -4,6 +4,7 @@ using FAM.GestaoProjetos.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FAM.GestaoProjetos.Infra.Repositories
@@ -19,7 +20,7 @@ namespace FAM.GestaoProjetos.Infra.Repositories
             DbSet = Db.Set<TModel>();
         }
 
-        public virtual async Task<List<TModel>> BuscarTodos() =>
+        public virtual async Task<IList<TModel>> BuscarTodos() =>
           await DbSet.ToListAsync();
 
         public virtual async Task<TModel> BuscarPorId(Guid id) =>

@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using FAM.GestaoProjetos.Application.Utils;
 using FAM.GestaoProjetos.Application.Validations;
+using FAM.GestaoProjetos.Application.ViewModels;
 using FAM.GestaoProjetos.Application.ViewModels.Cidade;
 using FAM.GestaoProjetos.Domain.Interfaces;
 using FAM.GestaoProjetos.Domain.Models;
 using FAM.GestaoProjetos.Services.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FAM.GestaoProjetos.Services.Services
@@ -22,9 +22,9 @@ namespace FAM.GestaoProjetos.Services.Services
             _map = map;
         }
 
-        public async Task<List<CidadeViewModel>> BuscarTodos()
+        public async Task<PagedViewModel<CidadeViewModel>> BuscarTodos()
         {
-            return _map.Map<List<CidadeViewModel>>(await _repository.BuscarTodos());
+            return _map.Map<PagedViewModel<CidadeViewModel>>(await _repository.Buscar(null, null));
         }
 
         public async Task<CidadeViewModel> BurcarPorId(Guid id)

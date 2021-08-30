@@ -19,9 +19,9 @@ namespace FAM.GestaoProjetos.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<CidadeViewModel>>> BuscarTodos()
+        public async Task<ActionResult<IList<CidadeViewModel>>> BuscarTodos()
         {
-            return await _service.BuscarTodos();
+            return Ok(await _service.BuscarTodos());
         }
 
         [HttpGet("{id:guid}")]
