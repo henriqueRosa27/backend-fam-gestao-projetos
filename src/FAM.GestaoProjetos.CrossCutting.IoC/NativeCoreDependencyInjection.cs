@@ -24,8 +24,13 @@ namespace FAM.GestaoProjetos.CrossCutting.IoC
             #region Services
             services.AddScoped<ICidadeService, CidadeService>();
             #endregion
+            var isTest = configuration.GetSection("IsTest").Value;
 
-            services.AddDbContext<GestaoProjetosContext>(options =>
+            if(!string.IsNullOrEmpty(isTest) && isTest == "True")
+                services.AddDbContext<GestaoProjetosContext>(options =>
+                   options.UseInMemoryDatabase("GestaoProjetos"));
+            else 
+                services.AddDbContext<GestaoProjetosContext>(options =>
                     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             return services;
